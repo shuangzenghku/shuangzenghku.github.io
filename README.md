@@ -66,11 +66,14 @@
         <audio id="audio-player" controls loop>
             <source id="audio-source" src="https://path-to-your-music/song1.mp3" type="audio/mpeg">
         </audio>
-        <div>
-            <button onclick="changeSong('美好的日子.mp3')">Beautiful Day</button>
-            <button onclick="changeSong('枫.mp3')">Maple</button>
-            <button onclick="changeSong('龙猫.mp3')">Totoro</button>
-        </div>
+        <select id="song-selector" onchange="changeSong()">
+            <option value="" disabled selected>My favorite songs</option>
+            <option value="美好的日子.mp3">Beautiful Day</option>
+            <option value="枫.mp3">Maple</option>
+            <option value="龙猫.mp3">Totoro</option>
+            <option value="温柔.mp3">Tenderness</option>
+            <option value="听见下雨的声音.mp3">Rhythm of the Rain</option>
+        </select>
     </div>
 </div>
 
@@ -89,10 +92,12 @@
         }
     }
 
-    function changeSong(songUrl) {
+    function changeSong() {
+        const songSelector = document.getElementById('song-selector');
         const audioPlayer = document.getElementById('audio-player');
         const audioSource = document.getElementById('audio-source');
-        audioSource.src = songUrl;
+        
+        audioSource.src = songSelector.value;
         audioPlayer.load();
         audioPlayer.play();
     }
