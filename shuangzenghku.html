@@ -45,6 +45,55 @@
         audio {
             width: 100%; /* 设置音频播放器宽度为 100% */
         }
+        #gallery {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gallery-image {
+            margin: 5px;
+            width: 100px; /* 设置相册图片的宽度 */
+            height: 100px; /* 设置相册图片的高度 */
+            overflow: hidden;
+            border-radius: 5px;
+            cursor: pointer; /* 鼠标悬停时显示为手形 */
+            display: flex; /* 使用 Flexbox 对齐内容 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+        }
+        .gallery-image img {
+            width: 100%;
+            height: 100%; /* 使图片填满容器 */
+            object-fit: cover; /* 保持图片比例并填满容器 */
+        }
+        /* 模态框样式 */
+        #modal {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        #modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -75,6 +124,19 @@
             <option value="听见下雨的声音.mp3">Rhythm of the Rain</option>
         </select>
     </div>
+
+    <div id="gallery">
+        <div class="gallery-image" onclick="openModal('image1.jpg')"><img src="image1.jpg"></div>
+        <div class="gallery-image" onclick="openModal('image2.jpg')"><img src="image2.jpg"></div>
+        <div class="gallery-image" onclick="openModal('image3.jpg')"><img src="image3.jpg"></div>
+        <div class="gallery-image" onclick="openModal('image4.jpg')"><img src="image4.jpg"></div>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<div id="modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modal-image" src="" alt="大图">
 </div>
 
 <script>
@@ -100,6 +162,18 @@
         audioSource.src = songSelector.value;
         audioPlayer.load();
         audioPlayer.play();
+    }
+
+    function openModal(imageSrc) {
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+        modalImage.src = imageSrc;
+        modal.style.display = 'flex'; // 显示模态框
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none'; // 隐藏模态框
     }
 </script>
 
