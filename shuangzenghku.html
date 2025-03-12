@@ -94,6 +94,12 @@
             font-weight: bold;
             cursor: pointer;
         }
+        .quote {
+            margin: 20px 280px; /* 上下50px，左右80px的页边距 */
+            text-align: left; /* 文本左对齐 */
+            line-height: 1.6; /* 行高 */
+            font-size: 16px; /* 字体大小 */
+        }
     </style>
 </head>
 <body>
@@ -123,6 +129,10 @@
             <option value="温柔.mp3">Tenderness</option>
             <option value="听见下雨的声音.mp3">Rhythm of the Rain</option>
         </select>
+    </div>
+
+    <div class="quote">
+        如果你说你在下午四点来，从三点钟开始，我就开始感觉很快乐，时间越临近，我就越来越感到快乐。 到了四点钟的时候，我就会坐立不安，我发现了幸福的价值，但是如果你随便什么时候来，我就不知道在什么时候准备好迎接你的心情了。
     </div>
 
     <div id="gallery">
